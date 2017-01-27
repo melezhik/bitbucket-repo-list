@@ -19,19 +19,23 @@ List Bitbucket repositories. Pagination included! (:
 
 ## login
 
-Your bitbucket login
+Your bitbucket login. Obligatory.
 
 ## password
 
-Your bitbucket password
+Your bitbucket password. Obligatory.
 
 ## team
 
-Bitbucket team ID
+Bitbucket team ID. Obligatory.
 
 ## project
 
-Bitbucket project key 
+Bitbucket project key. Obligatory.
+
+## pagelen
+
+Number of results per page. Optional, default value 100.
 
 # Author
 

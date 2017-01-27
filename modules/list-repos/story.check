@@ -1,0 +1,6 @@
+code: our $NEXT = undef;
+
+regexp: "next":\s+"(\S+)"
+code: <<CODE
+  our $NEXT = capture()->[0];
+CODE
