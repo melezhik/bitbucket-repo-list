@@ -37,7 +37,7 @@ Bitbucket project key. Obligatory.
 
 Number of results per page. Optional. Default value 100.
 
-## pahes_max
+## pages_max
 
 Maximum pages to proccess. Optional. Default value not set - proccess till the end
 
