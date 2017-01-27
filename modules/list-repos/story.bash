@@ -6,10 +6,11 @@ team=$(config team)
 pagelen=$(config pagelen)
 page=$(story_var page)
 
-curl -f -G https://api.bitbucket.org/2.0/repositories/$team \
+curl -s -f -G https://api.bitbucket.org/2.0/repositories/$team \
 -d q="project.key=\"${project}\"" \
 -d page=$page -u $login:$password \
 -d pagelen=$pagelen | perl -MJSON -e '
+  use strict;
   my $data = join "", (<STDIN>); 
   my $h = decode_json($data);
   #warn $data->{};
