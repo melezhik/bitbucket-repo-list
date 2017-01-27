@@ -1,14 +1,22 @@
 code: our $NEXT = undef;
 
-regexp: "next":\s+"(\S+)"
-code: <<CODE
-  our $NEXT = capture()->[0];
+regexp: continue: (true|false)
+
+generator: <<CODE
+our $cnt = capture()->[0];
+if ($cnt eq 'true') {
+  [
+   'regexp: next: (\S+)',
+   'code: our $NEXT = capture()->[0]'
+  ]
+}
+
 CODE
 
-regexp: "slug":\s+"(\S+)"
+regexp: repo: (\S+)
 
 code: <<CODE
-our @REPOS;
-push @REPOS, capture()->[0]; 
+  our @REPOS;
+  push @REPOS, map {$_->[0]} @{captures()}; 
 CODE
 

@@ -9,5 +9,15 @@ page=$(story_var page)
 curl -f -G https://api.bitbucket.org/2.0/repositories/$team \
 -d q="project.key=\"${project}\"" \
 -d page=$page -u $login:$password \
--d pagelen=$pagelen
+-d pagelen=$pagelen | perl -MJSON -e '
+  my $data = join "", (<STDIN>); 
+  my $h = decode_json($data);
+  #warn $data->{};
+  print "continue: ",  ( $h->{next} ? "true" :  "false" ), "\n";
+  print "next: ", $h->{next}, "\n";
+  for my $v (@{$h->{values}}){
+    print "repo: $v->{name}\n";
+  }
+
+'
 
