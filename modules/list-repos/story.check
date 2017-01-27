@@ -4,3 +4,11 @@ regexp: "next":\s+"(\S+)"
 code: <<CODE
   our $NEXT = capture()->[0];
 CODE
+
+regexp: "slug":\s+"(\S+)"
+
+code: <<CODE
+our @REPOS;
+push @REPOS, capture()->[0]; 
+CODE
+
